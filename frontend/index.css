@@ -5,11 +5,20 @@ h1{
 {
     text-align: center;
     border:5px blue solid;
-    background-color: lightblue;
     box-shadow: 10px 10px 5px grey;
 
+}
+.home-intro:hover
+{
+    background-color: lightgreen;
 }
 #p2
 {
     color: green;
+}
+#nav
+{
+    background-color: lightblue;
+    text-align: center;
+    margin: 20px;
 }
