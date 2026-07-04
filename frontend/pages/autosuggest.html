@@ -4,18 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .left-bar {
+           position: fixed;
+           top: 20px;
+           left: 20px;
+        }
+        .right-bar {
+           position: fixed;
+           top: 20px;
+           right: 20px;
+        }
+        .search-section {
+           text-align: center;
+           margin-top: 100px;
+        }
+        .first {
+           color: #ff0000;
+        }
+        .second {
+           color: #0000ff;
+        }
+        .tagline {
+           font-size: 14px;
+           color: #888;
+        }
+        .lens{
+            position: relative;
+            left: 30px;
+
+        }
+        .search-box {
+            padding: 15px 15px 15px 45px;
+            border-radius: 20px;
+            width: 50%;
+           
+        }
+        #suggestion-box {
+            border: 1px solid black;
+            width: 53%;
+            margin-left:24%;
+           
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-    <span>&#9881</span>
-    <span>&bull; online |</span>
-    <span>&#128339; -ms</span>
-    <h1>Rishika</h1>
-    <p> One Million Pages. Four algorithms. Prefix Based Auto Suggest
+    <div>
+    <span class="left-bar">&#9881</span>
+    <span class="right-bar">&#x2022; online | &#128339; -ms</span>
+    </div>
+    <div class="search-section">
+    <h1><span class="first">Harry</span> <span class="second">Potter</span></h1>
+    <p class="tagline"> One Million Pages. Four algorithms. Prefix Based Auto Suggest
     </p>
-    <span>&#128269</span>
-    <input type="text" id="search" placeholder="Start typing to search phrases">
+   <span> 
+    <span class="lens">&#128269;</span>
+        <input class="search-box" placeholder="Start typing to search phrases">
+   </span>
+   <div id="suggestion-box">
+    Suggestion box
+
     </div>
 </body>
 </html>
