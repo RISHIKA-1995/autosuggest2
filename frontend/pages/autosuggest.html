@@ -34,17 +34,22 @@
             left: 30px;
 
         }
-        .search-box {
+        .search{
             padding: 15px 15px 15px 45px;
             border-radius: 20px;
             width: 50%;
            
         }
         #suggestion-box {
-            border: 1px solid black;
+           /* border: 1px solid black;*/
             width: 53%;
             margin-left:24%;
            
+        }
+        #suggestion-item {
+            padding: 10px;
+            border-radius: 10px;
+            border:1px solid #ccc;
         }
     </style>
 </head>
@@ -59,11 +64,53 @@
     </p>
    <span> 
     <span class="lens">&#128269;</span>
-        <input class="search-box" placeholder="Start typing to search phrases">
+        <input class="search" id="search-box" placeholder="Start typing to search phrases">
    </span>
    <div id="suggestion-box">
-    Suggestion box
+    <!-- Suggestion box -->
 
     </div>
+    <script>
+        var searchBox = document.getElementById('search-box');
+        var suggestionBox = document.getElementById("suggestion-box");
+        searchBox.addEventListener('input', function() {
+            //complete 1,2-5 mins
+            //1.Get user typed text
+               var userInput = searchBox.value;
+               if(userInput.trim() === '') {
+                   // Clear the suggestion box if input is empty
+                   document.getElementById('suggestion-box').innerHTML = '';
+                   return;
+               }
+               else
+               {
+                var url1="https://autosuggest-backend.onrender.com/api/autosuggest?q=";
+                var url3="&algorithm=brute&limit=10&weighted=false";
+                var url=url1+userInput+url3;
+               }
+            //2.Make api call to get suggestion
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    //3.display data in html
+                    console.log(data);
+                    var resultsarray=data.results;
+                    var htmlresults='';
+                    for(var i=0;i<resultsarray.length;i++)
+                    {
+                        htmlresults+='<div id="suggestion-item">'+resultsarray[i].text+'</div>';
+                    }
+                    suggestionBox.innerHTML = htmlresults;
+                })
+            //3.display data in html
+    
+            // Perform auto-suggest logic here
+            // Update the suggestion box with results
+        });
+
+    </script>
+
 </body>
 </html>
